@@ -2,14 +2,14 @@
 <v-simple-table>
   <template v-slot:default>
     <thead>
-      <tr>
-        <th class="text-left">DEJ</th>
-        <th class="text-left">Niveau d'activité quotidienne</th>
+      <tr style="background:#018fb9;color:white;">
+        <th style="color:white;" class="text-left">DEJ</th>
+        <th style="color:white;" class="text-left">Niveau d'activité quotidienne</th>
       </tr>
     </thead>
     <tbody>
-      <tr for="item in cals">
-        <td><b>{{item.dej}}</b></td>
+      <tr v-for="(item, i) in calories">
+        <td><b>{{item.dej.toFixed(0)}}</b></td>
         <td>{{item.label}}</td>
       </tr>
     </tbody>
@@ -17,34 +17,32 @@
 </v-simple-table>
 </template>
 <script>
+import { mapActions, mapGetters } from 'vuex'
 export default {
-  props:[],
+  props:["title"],
 
   data() {
-    cals:[]
+    return {
+      calories:[]
+    }
   },
 
   beforeMount() {
-
+    this.loadCaloriesRecommandation().then((calories) => {
+      console.log(calories)
+      this.calories = calories
+    })
   },
 
   methods: {
     ...mapActions({
-      
+      loadCaloriesRecommandation: "load calories recommandation"
     })
-  }
+  },
   computed: {
-    category() {
-      if (this.age < 40) {
-        return 0
-      }
-
-      if (this.age < 60) {
-        return 1
-      }
-
-      return 2
-    }
+    ...mapGetters([
+      "caloriesRecommandation"
+    ])
   }
 }
 

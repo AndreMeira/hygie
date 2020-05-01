@@ -68,7 +68,7 @@ export default {
 
   beforeMount () {
     if (!this.user.fat) {
-      return this.$router.push({ name:"BodyFatComputing" })
+      return this.$router.push({ name:"BodyParamsForm" })
     }
   },
 

@@ -29,7 +29,7 @@
           <v-icon>mdi-calculator</v-icon>
         </v-list-item-action>
         <v-list-item-content>
-          <v-list-item-title>Calcul</v-list-item-title>
+          <v-list-item-title>Calcul masse grasse</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
@@ -43,14 +43,14 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-list-item link>
+      <!-- <v-list-item link>
         <v-list-item-action>
           <v-icon>mdi-finance</v-icon>
         </v-list-item-action>
         <v-list-item-content>
           <v-list-item-title>Evolution</v-list-item-title>
         </v-list-item-content>
-      </v-list-item>
+      </v-list-item> -->
 
       <v-list-item link @click="logout">
         <v-list-item-action>
@@ -61,14 +61,14 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-list-item link>
+      <!-- <v-list-item link>
         <v-list-item-action>
           <v-icon>mdi-account-question</v-icon>
         </v-list-item-action>
         <v-list-item-content>
           <v-list-item-title>Aide</v-list-item-title>
         </v-list-item-content>
-      </v-list-item>
+      </v-list-item> -->
 
     </v-list>
   </v-navigation-drawer>

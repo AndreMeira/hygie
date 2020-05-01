@@ -2,7 +2,7 @@
   <v-container class="fill-height">
   <v-row align="center" justify="center">
 
-    <v-form v-model="valid">
+    <v-form>
         <h2>CONSTRUIRE SON PROGRAMME NUTRITIONNEL & GÉRER SON POIDS</h2>
         <h3>2/Analyse ton métabolisme</h3>
 
@@ -30,8 +30,8 @@
           </v-col>
         </v-row>
         <v-row justify="center">
-            <v-btn rounded color="primary" dark
-            @click="$router.push({ name: 'DailyDataForm'})">Saisir mes données quotidienne</v-btn>
+          <v-btn rounded color="primary" dark
+          @click="submit">Saisir mes données quotidiennes</v-btn>
         </v-row>
 
     </v-form>
@@ -39,11 +39,32 @@
 </v-container>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
-  beforeRouteEnter (to, from, next) {
+
+  beforeMount () {
     if (!this.currentUser.body) {
-      return next({ name:"BodyParamsForm" })
+      return this.$router.push({ name:"BodyParamsForm" })
+    }
+  },
+
+  data() {
+    return {
+      date: new Date().toISOString().substr(0, 10),
+    }
+  },
+
+  methods: {
+    ...mapActions({
+      createDailyDatas:"create daily datas"
+    }),
+    submit(evt) {
+      console.log(evt, this.date)
+      evt.preventDefault()
+      this.createDailyDatas({date:this.date}).then(d => {
+        this.$router.push({name:"DailyDataForm"})
+      })
     }
   },
 
@@ -52,14 +73,6 @@ export default {
       "currentUser"
     ])
   }
-}
-</script>
-
-<script>
-export default {
-  data: () => ({
-    date: new Date().toISOString().substr(0, 10),
-  })
 }
 </script>
 <style lang="scss">

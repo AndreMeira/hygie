@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import BaseTable from "@/components/BaseProportionTable.vue"
+import BaseTable from "@/components/tables/BaseProportionTable.vue"
 export default {
   components: {
     BaseTable

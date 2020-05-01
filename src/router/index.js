@@ -10,6 +10,7 @@ import BodyFatComputing from '../views/BodyFatComputing.vue'
 import BodyFatInterpretation from '../views/BodyFatInterpretation.vue'
 import EnergyPerDay from '../views/EnergyPerDay.vue'
 import NutritionPlan from '../views/NutritionPlan.vue'
+import CustomPlan from '../views/CustomPlan.vue'
 import Account from '../views/account/Account.vue'
 import axios from 'axios'
 
@@ -45,6 +46,11 @@ const routes = [
     path: '/masse-grasse-interpretation',
     name: 'BodyFatInterpretation',
     component: BodyFatInterpretation
+  },
+  {
+    path: '/programme-perso',
+    name: 'CustomPlan',
+    component: CustomPlan
   },
   {
     path: '/programme-nutritionnel',

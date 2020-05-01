@@ -10,4 +10,8 @@ export default {
   // User Body
   updateBodyParams: baseApi + "/api/update-body-params",
   updateBodyFatParams: baseApi + "/api/update-body-fat-params",
+  loadCaloriesRecommandation: baseApi + "/api/calories-recommandation",
+  loadDailyDatas:  baseApi + "/api/daily-data",
+  createDailyDatas:  baseApi + "/api/daily-data",
+  updateDailyDatas: (d) =>  baseApi + "/api/daily-data-day/" + d,
 }

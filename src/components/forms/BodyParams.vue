@@ -94,7 +94,9 @@ export default {
       }
 
       const formData = this.getFormData()
-      this.saveBodyParams(formData).then(() => {})
+      this.saveBodyParams(formData).then(() => {
+        this.$emit("saved", {text:"données enregistrées"})
+      })
     },
 
     getFormData() {

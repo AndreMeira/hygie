@@ -111,7 +111,7 @@ export default {
 
   methods: {
     ...mapActions({
-      register:"register user"
+      updateUser:"update user"
     }),
 
     getFormData() {
@@ -124,21 +124,12 @@ export default {
       }
     },
 
-    registerUser(formData) {
-      this.register(formData).then(data => {
-          this.signIn(formData)
-        }).catch((data) => {
-          console.log(data)
-          this.errors = data.errors
-        })
-    },
-
-    signIn(formData) {
-      this.$store.dispatch("authenticate user", {
-        password: formData.password,
-        username: formData.email
-      }).then(() => {
-        this.$router.push('/')
+    updateUser(formData) {
+      this.register(formData).then(() => {
+        this.$emit("saved", {text:"données enregistrées"})
+      }).catch((data) => {
+        console.log(data)
+        this.errors = data.errors
       })
     },
 

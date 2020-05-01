@@ -5,7 +5,7 @@
       class="overflow-hidden">
       <v-row :class="{open:isOpen}">
         <v-col>
-          <component :is="currentView" :user="currentUser"/>
+          <component :is="currentView" :user="currentUser" v-on:saved="notice"/>
         </v-col>
       </v-row>
       <v-navigation-drawer
@@ -68,6 +68,23 @@
         </v-list>
       </v-navigation-drawer>
     </v-card>
+    <v-snackbar
+      v-model="snackbar"
+      :bottom="false"
+      color="green"
+      :multi-line="false"
+      :timeout="1500"
+      :top="true"
+    >
+    {{ text }}
+      <v-btn
+        dark
+        text
+        @click="snackbar = false"
+      >
+        fermer
+      </v-btn>
+    </v-snackbar>
   </v-container>
 </template>
 <script>
@@ -80,12 +97,14 @@ export default {
   components: {
     Account,
     BodyParams,
-    FatComputing
+    FatComputing,
   },
 
   data() {
      return {
+       text:false,
        isOpen:true,
+       snackbar:false,
        currentView:"Account"
      }
   },
@@ -100,6 +119,11 @@ export default {
     ...mapActions({
       register:"register user"
     }),
+
+    notice(evt) {
+      this.snackbar = true
+      this.text = evt.text
+    },
 
     registerUser(formData) {
       this.register(formData).then(data => {

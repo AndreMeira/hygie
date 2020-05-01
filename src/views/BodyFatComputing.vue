@@ -81,6 +81,13 @@
 import { mapActions, mapGetters } from 'vuex'
 export default {
 
+
+  beforeMount () {
+    if (!this.$store.getters.user.body) {
+      return this.$router.push({ name:"BodyParamsForm" })
+    }
+  },
+
   data() {
     return {
       valid:true,
@@ -109,7 +116,9 @@ export default {
       }
 
       const formData = this.getFormData()
-      this.updateBodyFat(formData).then(() => {})
+      this.updateBodyFat(formData).then(() => {
+        this.$router.push({name:"BodyFatInterpretation"})
+      })
     },
 
     getFormData() {

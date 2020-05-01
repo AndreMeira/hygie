@@ -38,7 +38,7 @@
             </div>
           </v-col>
         </v-row>
-        <v-row v-if="user.body.gender === 'F'">
+        <v-row v-if="user.body && (user.body.gender === 'F')">
           <v-col cols="12" md="4">
             <v-text-field
               v-model="hips"
@@ -101,7 +101,9 @@ export default {
       }
 
       const formData = this.getFormData()
-      this.updateBodyFat(formData).then(() => {})
+      this.updateBodyFat(formData).then(() => {
+        this.$emit("saved", {text:"données enregistrées"})
+      })
     },
 
     getFormData() {
