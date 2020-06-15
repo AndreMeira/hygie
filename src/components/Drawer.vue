@@ -52,7 +52,7 @@
         </v-list-item-content>
       </v-list-item> -->
 
-      <v-list-item link @click="logout">
+      <v-list-item v-if="this.$store.getters.user.body" link @click="logout">
         <v-list-item-action>
           <v-icon>mdi-logout</v-icon>
         </v-list-item-action>
