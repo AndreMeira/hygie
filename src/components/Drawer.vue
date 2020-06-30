@@ -3,6 +3,17 @@
     <v-list dense>
 
       <v-list-item link
+      @click="$router.push({ name: 'Home'})">
+        <v-list-item-action>
+          <v-icon>mdi-home</v-icon>
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title>Accueil</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
+
+      <v-list-item link
       @click="$router.push({ name: 'Account'})">
         <v-list-item-action>
           <v-icon>mdi-account-box</v-icon>
@@ -13,7 +24,7 @@
       </v-list-item>
 
 
-      <v-list-item link
+      <v-list-item link v-if="false"
       @click="$router.push({ name: 'DailyDataForm'})">
         <v-list-item-action>
           <v-icon>mdi-calendar-month</v-icon>
@@ -23,7 +34,7 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-list-item link
+      <v-list-item link v-if="false"
       @click="$router.push({ name: 'BodyFatInterpretation'})">
         <v-list-item-action>
           <v-icon>mdi-calculator</v-icon>
@@ -33,7 +44,7 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-list-item link
+      <v-list-item link 
       @click="$router.push({ name: 'NutritionPlan'})">
         <v-list-item-action>
           <v-icon>mdi-nutrition</v-icon>
@@ -76,14 +87,11 @@
 
 <script>
 export default {
-  props: {
-    drawer:Boolean
-  },
+  props: ["drawer", "checked"],
   model: {
     prop: 'checked',
     event: 'change'
   },
-
   methods: {
     logout() {
       this.$store.dispatch("logout user").then(() => {
@@ -94,7 +102,12 @@ export default {
         console.log("in logout failed")
       })
     }
+  },
+  watch: {
+    drawer (v) {
+      this.checked = this.drawer
+      this.$emit("change", this.drawer)
+    }
   }
 }
-
 </script>

@@ -6,7 +6,7 @@
         <h2>CONSTRUIRE SON PROGRAMME NUTRITIONNEL & GÉRER SON POIDS</h2>
       </v-row>
       <v-row>
-        <h3>4/Evalue tes dépenses énergétiques journalières (DEJ)</h3>
+        <h3>Evalue tes dépenses énergétiques journalières (DEJ)</h3>
       </v-row>
       <v-row>
         <v-col cols="12" md="12">

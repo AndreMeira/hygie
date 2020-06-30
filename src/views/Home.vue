@@ -1,18 +1,52 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-container fill-height>
+    <v-row>
+      <v-col col="12">
+        <v-row align="center" justify="center" class="margin">
+          <span class="data"><v-btn
+                  rounded color="primary" dark 
+                  @click="$router.push({ name:'BodyParamsFormNextPage', params: { nextPage: 'Home' } })">Tes données corporelles</v-btn> </span>
+        </v-row>
+        
+        <v-row align="center" justify="center" class="margin">
+          <span class="data"><v-btn
+                  rounded color="primary" dark 
+                  @click="$router.push({ name: 'BodyFatComputing'})">Calcule ta masse grasse</v-btn> </span>
+        </v-row>
+        <v-row align="center" justify="center" class="margin">
+          <span class="data"><v-btn
+                  rounded color="primary" dark 
+                  @click="$router.push({ name: 'DailyDataForm'})">Saisies tes données quotidiennes</v-btn> </span>
+        </v-row>
+          <v-row align="center" justify="center" class="margin">
+          <span class="data"><v-btn
+                  rounded color="primary" dark 
+                  @click="$router.push({ name: 'NutritionPlan'})">Ton plan nutritionnel</v-btn> </span>
+        </v-row>
+      </v-col>
+    </v-row>
+  
+</v-container>
 </template>
 
+
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { mapActions } from 'vuex'
 
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
+  data() {
+     return {
+       
+     }
+  },
+  methods: {
+    
   }
 }
+
 </script>
+<style lang="scss" scoped>
+.margin {
+  margin: 2rem 0;
+}
+</style>

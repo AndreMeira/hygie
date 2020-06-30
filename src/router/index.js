@@ -28,6 +28,11 @@ const routes = [
     component: BodyParamsForm
   },
   {
+    path: '/donnees-perso/:nextPage',
+    name: 'BodyParamsFormNextPage',
+    component: BodyParamsForm
+  },
+  {
     path: '/mes-donnees-quotidienne-calendrier',
     name: 'DailyDataCalendar',
     component: DailyDataCalendar
@@ -93,9 +98,9 @@ router.beforeEach((to, from, next) => {
   if (!['Login', 'Signup'].includes(to.name) && !token) {
       next({ name: 'Login' })
   } else if (['Login', 'Signup'].includes(to.name) && token) {
-    next({ name: 'BodyParamsForm' })
+    next({ name: 'Home' })
   } else if (['Home'].includes(to.name) && token) {
-    next({ name: 'NutritionPlan' })
+    next()
   } else {
     next()
   }

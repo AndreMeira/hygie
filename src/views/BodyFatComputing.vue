@@ -5,7 +5,7 @@
     <v-form v-model="valid" ref="form">
         <h2>CONSTRUIRE SON PROGRAMME NUTRITIONNEL & GÉRER SON POIDS</h2>
 
-        <h3>3/Calcule ta masse grasse</h3>
+        <h3>Calcule ta masse grasse</h3>
         <v-row>
           <v-col cols="12" md="12">
             <v-divider></v-divider>
@@ -84,7 +84,7 @@ export default {
 
   beforeMount () {
     if (!this.$store.getters.user.body) {
-      return this.$router.push({ name:"BodyParamsForm" })
+      return this.$router.push({ name:"BodyParamsFormNextPage", params: { nextPage: 'BodyFatComputing' } })
     }
   },
 

@@ -2,7 +2,7 @@
   <v-app id="inspire">
     <template v-if="ready">
       <Toolbar @drawer="toggleDrawer($event)" />
-      <Drawer :drawer="drawerOpen" />
+      <Drawer :drawer="drawerOpen" @change="setDrawer"/>
       <v-content>
         <router-view></router-view>
       </v-content>
@@ -24,6 +24,11 @@ export default {
   props: {
     source: String,
   },
+  data: () => ({
+    ready: false,
+    drawerOpen: null,
+    checked:null,
+  }),
   created () {
     this.$store.dispatch("load current user").then(() => {
       this.ready = true
@@ -32,14 +37,14 @@ export default {
       this.ready = true
     })
   },
-  data: () => ({
-    ready: false,
-    drawerOpen: true,
-  }),
   methods: {
     toggleDrawer(v) {
-      console.log(v)
-      this.drawerOpen = v
+      this.drawerOpen = !this.drawerOpen
+      console.log(">>>>>>>>>>< toggleDrawer", this.drawerOpen)
+    },
+    setDrawer(e) {
+      console.log(">>>>>>>>>>< setDrawer", e),
+      this.drawerOpen = e
     }
   }
 }

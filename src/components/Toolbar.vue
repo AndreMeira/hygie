@@ -2,7 +2,7 @@
   <v-app-bar  app color="#68B5B5" dark :drawer="drawer">
     <v-app-bar-nav-icon @click.stop="toggleDrawer()" />
     <v-toolbar-title class="hygie-font">
-      <v-avatar>
+      <v-avatar @click="$router.push({name:'Home'})">
       <img
         src="https://nutritionenergetique.com/wp-content/uploads/2019/08/LISA-SALIS-01.png"
         alt="Hygie Academie">
@@ -24,7 +24,6 @@ export default {
   }),
   methods: {
     toggleDrawer() {
-      // alert('here')
       this.drawer = !this.drawer
       this.$emit('drawer', this.drawer)
     }

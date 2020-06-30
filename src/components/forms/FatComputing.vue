@@ -1,7 +1,11 @@
 <template>
 
     <v-form v-model="valid" ref="form">
-        <h3>Calcul de la masse grasse</h3>
+        <h3>
+          <template v-if="neck">Mets à jour</template>
+          <template v-else>Rentre</template>
+          tes données corporelles
+        </h3>
         <v-row>
           <v-col cols="12" md="12">
             <v-divider></v-divider>

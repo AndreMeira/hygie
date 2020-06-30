@@ -3,7 +3,13 @@
 
     <v-card
       class="overflow-hidden">
-      <v-row :class="{open:isOpen}">
+      <v-toolbar flat>
+          <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+
+          <v-spacer></v-spacer>
+        </v-toolbar>
+
+      <v-row :class="{open:drawer}">
         <v-col>
           <component :is="currentView" :user="currentUser" v-on:saved="notice"/>
         </v-col>
@@ -105,6 +111,7 @@ export default {
        text:false,
        isOpen:true,
        snackbar:false,
+       drawer:true,
        currentView:"Account"
      }
   },

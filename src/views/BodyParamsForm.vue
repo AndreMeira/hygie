@@ -5,7 +5,7 @@
     <v-form v-model="valid" ref="form">
         <h2>CONSTRUIRE SON PROGRAMME NUTRITIONNEL & GÉRER SON POIDS</h2>
 
-        <h3>1/Entre tes données</h3>
+        <h3>Entre tes données</h3>
         <v-row>
           <v-col cols="12" md="12">
             <v-divider></v-divider>
@@ -17,7 +17,7 @@
             <v-text-field
               v-model="weight"
               type="text"
-              :rules="[rules.required, rules.range]"
+              :rules="[rules.required, rules.weight]"
               label="ton poids actuel en kg"
               filled
               required></v-text-field>
@@ -27,7 +27,7 @@
             <v-text-field
               v-model="height"
               type="text"
-              :rules="[rules.range, rules.required]"
+              :rules="[rules.height, rules.required]"
               label="ta taille en cm"
               filled
               required></v-text-field>
@@ -58,10 +58,15 @@
           </v-col>
         </v-row>
 
-        <v-row justify="center">
+        <v-row v-if="!nextPage" justify="center">
             <v-btn rounded color="primary" dark
             @click="submit">Enregistrer</v-btn>
         </v-row>
+        <v-row v-else justify="center">
+            <v-btn rounded color="primary" dark
+            @click="submit">Suivant</v-btn>
+        </v-row>
+
 
     </v-form>
   </v-row>
@@ -73,6 +78,11 @@
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
+  beforeMount () {
+    this.nextPage = this.$route.params.nextPage
+    console.log(">>>>><", this.nextPage)
+  },
+
   data() {
 
      return {
@@ -83,7 +93,8 @@ export default {
        gender:this.$store.getters.userBody.gender,
        rules: {
           required: value => !!value || 'Requis',
-          range: value => parseInt(value) > 0 && parseInt(value) < 220 || "Valeur incorrecte",
+          height: value => parseInt(value) > 120 && parseInt(value) < 210 || "Cette taille semble incorrecte",
+          weight: value => parseInt(value) > 30 && parseInt(value) < 210 || "Ce poids semble incorrect",
           year: value => parseInt(value) > 1900 && parseInt(value) < 2010 || "Valeur incorrecte"
         },
      }
@@ -104,7 +115,7 @@ export default {
 
       const formData = this.getFormData()
       this.saveBodyParams(formData).then(() => {
-        this.$router.push({ name:"DailyDataForm" })
+        this.$router.push({ name:this.nextPage})
       })
     },
 

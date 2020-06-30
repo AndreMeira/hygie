@@ -1,7 +1,11 @@
 <template>
 
     <v-form v-model="valid" ref="form">
-        <h3>Données corporelles</h3>
+        <h3>
+          <template v-if="height">Mets à jour</template>
+          <template v-else>Rentre</template>
+          tes données corporelles
+        </h3>
         <v-row>
           <v-col cols="12" md="12">
             <v-divider></v-divider>
@@ -13,7 +17,7 @@
             <v-text-field
               v-model="weight"
               type="text"
-              :rules="[rules.required, rules.range]"
+              :rules="[rules.required, rules.weight]"
               label="ton poids actuel en kg"
               filled
               required></v-text-field>
@@ -23,7 +27,7 @@
             <v-text-field
               v-model="height"
               type="text"
-              :rules="[rules.range, rules.required]"
+              :rules="[rules.height, rules.required]"
               label="ta taille en cm"
               filled
               required></v-text-field>
@@ -75,6 +79,8 @@ export default {
        rules: {
           required: value => !!value || 'Requis',
           range: value => parseInt(value) > 0 && parseInt(value) < 220 || "Valeur incorrecte",
+          height: value => parseInt(value) > 120 && parseInt(value) < 210 || "Cette taille semble incorrete",
+          weight: value => parseInt(value) > 30 && parseInt(value) < 210 || "Ce poids semble incorret",
           year: value => parseInt(value) > 1900 && parseInt(value) < 2010 || "Valeur incorrecte"
         },
      }

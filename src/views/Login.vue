@@ -54,7 +54,7 @@
         </v-row>
 
         <v-row justify="center">
-            <v-btn rounded color="primary" dark @click="submit">Se connecter</v-btn>
+            <v-btn rounded color="primary" dark @click="submit" :loading="loading">Se connecter</v-btn>
             <span class="white--text signup">
                 <router-link :to="{ name: 'Signup', params: {} }">pas encore inscrit(e)?</router-link>
             </span>
@@ -72,6 +72,7 @@ import { mapActions } from 'vuex'
 export default {
   data() {
      return {
+       loading:false,
        pwd:"",
        email:"",
        valid:false,
@@ -88,10 +89,12 @@ export default {
   methods: {
     submit(evt) {
       evt.preventDefault();
+      this.loading = true
       this.authenticate(this.getFormData()).then((data) => {
         console.log("data");
         this.$router.push({ name:"Home" }).catch(e => console.log(e))
       }).catch(({ data }) => {
+        this.loading = false
         this.errors = {password: ["Identifiant/mot de passe incorrect"]}
       })
     },

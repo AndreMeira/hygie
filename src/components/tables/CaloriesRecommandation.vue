@@ -31,6 +31,7 @@ export default {
     this.loadCaloriesRecommandation().then((calories) => {
       console.log(calories)
       this.calories = calories
+      this.$emit("ready")
     })
   },
 

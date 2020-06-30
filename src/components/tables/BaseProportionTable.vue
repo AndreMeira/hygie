@@ -1,10 +1,8 @@
 <template>
   <div class="space-top">
-    <v-row>
+    
       <h4 :style="{borderBottomColor:color}" class="hygie-font"><span v-html="title" /></h4>
-    </v-row>
-    <v-row>
-
+    
       <v-simple-table>
         <template v-slot:default>
           <thead>
@@ -49,7 +47,6 @@
         </template>
       </v-simple-table>
 
-  </v-row>
   </div>
 </template>
 <script>

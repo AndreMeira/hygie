@@ -91,7 +91,7 @@
         </v-row>
 
         <v-row justify="center">
-            <v-btn rounded color="primary" dark @click="submit">S'inscrire</v-btn>
+            <v-btn rounded color="primary" dark @click="submit" :loading="loading">S'inscrire</v-btn>
             <span class="white--text signup">
                 <router-link :to="{ name: 'Login', params: {} }">déjà inscrit(e)?</router-link>
             </span>
@@ -109,6 +109,7 @@ import { mapActions } from 'vuex'
 export default {
   data() {
      return {
+       loading:false,
        pwd:"",
        email:"",
        pwdConfirm:"",
@@ -142,15 +143,18 @@ export default {
     },
 
     registerUser(formData) {
+      this.loading = true
       this.register(formData).then(data => {
           this.signIn(formData)
         }).catch((data) => {
+          this.loading = false
           console.log(data)
           this.errors = data.errors
         })
     },
 
     signIn(formData) {
+      
       this.$store.dispatch("authenticate user", {
         password: formData.password,
         username: formData.email

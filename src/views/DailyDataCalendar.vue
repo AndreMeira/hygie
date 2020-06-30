@@ -4,7 +4,7 @@
 
     <v-form>
         <h2>CONSTRUIRE SON PROGRAMME NUTRITIONNEL & GÉRER SON POIDS</h2>
-        <h3>2/Analyse ton métabolisme</h3>
+        <h3>Analyse ton métabolisme</h3>
 
         <v-row>
           <v-col cols="12" md="12">
@@ -45,7 +45,7 @@ export default {
 
   beforeMount () {
     if (!this.currentUser.body) {
-      return this.$router.push({ name:"BodyParamsForm" })
+      return this.$router.push({ name:"BodyParamsFormNextPage", params: { nextPage: 'DailyDataCalendar' } })
     }
   },
 

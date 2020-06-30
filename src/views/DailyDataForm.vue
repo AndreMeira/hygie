@@ -1,10 +1,32 @@
 <template>
   <v-container class="fill-height">
+    <div class="text-center">
+  <v-dialog 
+      v-model="loading"
+      hide-overlay
+      persistent
+      width="300"
+    >
+      <v-card
+        color="primary"
+        dark
+      >
+        <v-card-text>
+          Chargement en cours
+          <v-progress-linear
+            indeterminate
+            color="white"
+            class="mb-0"
+          ></v-progress-linear>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
+  </div>
   <v-row align="center" justify="center" v-if="datas && datas.days">
 
     <v-form v-model="valid">
-        <h2>CONSTRUIRE SON PROGRAMME NUTRITIONNEL & GÉRER SON POIDS</h2>
-        <h3>2/Analyse ton métabolisme</h3>
+        <h2>Analyse ton métabolisme</h2>
+        <h3>Rentre tes données quotidiennes afin d'évaluer ton métabolisme</h3>
 
         <v-row>
           <v-col cols="12" md="12">
@@ -95,10 +117,10 @@
               @click="$router.push({ name: 'DailyDataCalendar'})">Saisir une nouvelle semaine</v-btn> <span />
             </v-row>
           </v-col>
-          <v-col cols="6" md="3">
+          <v-col cols="6" md="3" v-if="false">
             <v-row justify="end">
               <v-btn rounded color="#1285b7" dark
-              @click="$router.push({ name: 'CustomPlan'})">Suivant</v-btn>
+              @click="$router.push({ name: 'CustomPlan'})">Enregistrer</v-btn>
             </v-row>
           </v-col>
         </v-row>
@@ -183,6 +205,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   data: () => ({
+    loading:true,
     dialog:false,
     open:false,
     date:null,
@@ -201,12 +224,13 @@ export default {
 
   beforeMount () {
     if (!this.currentUser.body) {
-      return this.$router.push({ name:"BodyParamsForm" })
+      return this.$router.push({ name:"BodyParamsFormNextPage", params: { nextPage: 'DailyDataCalendar' } })
     }
 
     this.loadDailyDatas().then((data) => {
       this.datas = data
       this.date = data.start
+      this.loading = false
     }).catch(e => {
       return this.$router.push({ name:"DailyDataCalendar" })
     })
