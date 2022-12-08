@@ -79,7 +79,7 @@
 
 
         <v-row justify="end">
-            <v-btn rounded color="primary" dark @click="submit">Enregistrer</v-btn>
+            <v-btn rounded color="#f14156" dark @click="submit">Enregistrer</v-btn>
         </v-row>
 
     </v-form>
@@ -143,7 +143,7 @@ export default {
       }
 
       const formData = this.getFormData()
-      this.registerUser(formData)
+      this.updateUser(formData)
     }
   }
 }

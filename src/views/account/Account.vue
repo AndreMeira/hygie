@@ -29,7 +29,7 @@
           class="py-0">
           <v-list-item two-line :class="miniVariant && 'px-0'">
             <v-list-item-avatar>
-              <v-avatar color="blue" size="2rem">
+              <v-avatar BodyParams size="2rem">
                 <v-icon size="1.8rem" dark>mdi-account-circle</v-icon>
               </v-avatar>
             </v-list-item-avatar>
@@ -41,16 +41,6 @@
           </v-list-item>
 
           <v-divider></v-divider>
-
-          <v-list-item link @click="currentView = 'Account'">
-            <v-list-item-icon>
-              <v-icon>mdi-account</v-icon>
-            </v-list-item-icon>
-
-            <v-list-item-content>
-              <v-list-item-title>Infos perso</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
 
           <v-list-item link @click="currentView = 'BodyParams'">
             <v-list-item-icon>
@@ -112,7 +102,7 @@ export default {
        isOpen:true,
        snackbar:false,
        drawer:true,
-       currentView:"Account"
+       currentView:"BodyParams"
      }
   },
 

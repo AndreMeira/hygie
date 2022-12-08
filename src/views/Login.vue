@@ -91,7 +91,6 @@ export default {
       evt.preventDefault();
       this.loading = true
       this.authenticate(this.getFormData()).then((data) => {
-        console.log("data");
         this.$router.push({ name:"Home" }).catch(e => console.log(e))
       }).catch(({ data }) => {
         this.loading = false

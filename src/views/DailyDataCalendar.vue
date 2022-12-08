@@ -30,7 +30,7 @@
           </v-col>
         </v-row>
         <v-row justify="center">
-          <v-btn rounded color="primary" dark
+          <v-btn rounded color="#f14156" dark
           @click="submit">Saisir mes données quotidiennes</v-btn>
         </v-row>
 

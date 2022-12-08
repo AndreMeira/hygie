@@ -5,7 +5,7 @@
         <v-row align="center" justify="center" class="margin">
           <span class="data"><v-btn
                   rounded color="primary" dark 
-                  @click="$router.push({ name:'BodyParamsFormNextPage', params: { nextPage: 'Home' } })">Tes données corporelles</v-btn> </span>
+                  @click="$router.push({ name: 'Account'})">Tes données corporelles</v-btn> </span>
         </v-row>
         
         <v-row align="center" justify="center" class="margin">

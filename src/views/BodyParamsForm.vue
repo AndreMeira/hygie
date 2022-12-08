@@ -59,11 +59,11 @@
         </v-row>
 
         <v-row v-if="!nextPage" justify="center">
-            <v-btn rounded color="primary" dark
+            <v-btn rounded color="#f14156" dark
             @click="submit">Enregistrer</v-btn>
         </v-row>
         <v-row v-else justify="center">
-            <v-btn rounded color="primary" dark
+            <v-btn rounded color="#f14156" dark
             @click="submit">Suivant</v-btn>
         </v-row>
 

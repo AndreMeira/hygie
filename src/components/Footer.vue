@@ -1,5 +1,5 @@
 <template>
-  <v-footer color="#68B5B5" app>
+  <v-footer color="#f14156" app>
     <v-container fluid>
       <div class="footer-text">
       <v-row justify="center">

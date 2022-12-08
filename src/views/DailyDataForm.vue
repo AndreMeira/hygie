@@ -90,7 +90,7 @@
                   <td>{{d.carbs || "-"}}</td>
                   <td>{{d.fat || "-"}}</td>
                   <td>
-                    <v-btn class="my-edit" depressed small color="primary"
+                    <v-btn class="my-edit" depressed small color="#f14156" dark
                     @click="openDialog(d.day_number)">
                       <v-icon>mdi-circle-edit-outline</v-icon>
                     </v-btn>
@@ -113,13 +113,13 @@
         <v-row justify="">
           <v-col cols="6" md="9">
             <v-row justify="">
-              <v-btn rounded color="#1285b7" dark
+              <v-btn rounded color="#f14156" dark
               @click="$router.push({ name: 'DailyDataCalendar'})">Saisir une nouvelle semaine</v-btn> <span />
             </v-row>
           </v-col>
           <v-col cols="6" md="3" v-if="false">
             <v-row justify="end">
-              <v-btn rounded color="#1285b7" dark
+              <v-btn rounded color="#f14156" dark
               @click="$router.push({ name: 'CustomPlan'})">Enregistrer</v-btn>
             </v-row>
           </v-col>
@@ -189,7 +189,7 @@
             </v-col>
           </v-row>
           <v-row justify="center">
-              <v-btn rounded color="primary" dark
+              <v-btn rounded color="#f14156" dark
               @click="saveDayData">Enregistrer</v-btn>
           </v-row>
         </v-form>
@@ -298,7 +298,7 @@ form {
   width: 100%;
 }
 .sum-up {
-  background-color: transparentize(#c4d000, 0.5);
+  background-color: transparentize(#f14156, 0.5);
   font-weight: bold;
 }
 

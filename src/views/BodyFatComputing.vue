@@ -61,7 +61,7 @@
           <v-col cols="12" md="2">
             <v-row>
               <v-btn
-              rounded color="primary" dark
+              rounded color="#f14156" dark
               @click="submit">Calculer ma masse grasse</v-btn>
             </v-row>
           </v-col>

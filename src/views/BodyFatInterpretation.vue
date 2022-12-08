@@ -14,7 +14,7 @@
         </v-col>
         <v-col cols="12" md="3" class="text-right">
             <span class="data"><v-btn
-            rounded color="primary" dark small
+            rounded color="#f14156" dark small
             @click="$router.push({ name: 'BodyFatComputing'})">Editer</v-btn> <span /> </span>
         </v-col>
       </v-row>
@@ -48,7 +48,7 @@
       <v-row justify="end">
         <v-col cols="12" md="3" class="text-right">
             <span class="data"><v-btn
-            rounded color="primary" dark small
+            rounded color="#f14156" dark small
             @click="$router.push({ name: 'Home'})">Enregistrer</v-btn> <span /> </span>
         </v-col>
       </v-row>

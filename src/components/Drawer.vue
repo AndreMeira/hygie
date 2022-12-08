@@ -95,7 +95,7 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch("logout user").then(() => {
-        this.$router.push({ name: 'Home'})
+        this.$router.push({ name: 'Login'})
         console.log("in logout success")
       }).catch(e => {
         this.$router.push({ name: 'Home'})
